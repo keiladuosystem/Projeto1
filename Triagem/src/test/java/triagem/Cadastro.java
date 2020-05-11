@@ -299,7 +299,7 @@ public class Cadastro {
 								"div.modal-dialog.modal-lg > div.modal-content > div.modal-header > #myModalLabel"))
 						.getText());
 		// Campo para filtro de nome e e-mail
-		driver.findElement(By.id("filtro_name")).sendKeys(Keys.chord(nome));
+		driver.findElement(By.id("filtro_name")).sendKeys(Keys.chord(email));
 		Print("Profissional\\Passo 3 - Pop-up de Pesquisa");
 		//botão para realizar a pesquisa
 		driver.findElement(By.cssSelector("#myModalFilter > form > div > div > div.modal-footer > button")).click();
