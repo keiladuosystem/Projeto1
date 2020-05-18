@@ -160,8 +160,7 @@ public class Cadastro {
 
 	public void Print(String nomePrint) throws IOException {
 		File foto = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String cwd = System.getProperty("user.dir");
-		FileUtils.copyFile(foto, new File("C:\\Jenkins-QA\\DuoDoctor23"
+		FileUtils.copyFile(foto, new File("\\\\192.168.111.123\\Jenkins-QA\\DuoDoctor23\\Evidencia"
 				+ pastaPrint + cod +"\\" + nomePrint + ".png"));
 	}
 
@@ -308,13 +307,11 @@ public class Cadastro {
 				driver.findElement(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr[1]/td[3]/strong")).getText());
 		Print("Profissional\\Passo 4 - Pesquisa realizada com sucesso");
 		//Validando o Laudo exibido
-		String classificacao = driver.findElement(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr[1]/td[4]/a")).getText();
-		try {
-			Assert.assertEquals(laudo, classificacao);
-		} catch (Exception ex) {
-			Assert.fail(nome + "Resultado Esperado para o Laudo: " + laudo + "/" + "Resultado Obtido : " + classificacao);
-		}
+	
+		Assert.assertEquals(laudo,
+				driver.findElement(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr[1]/td[4]/a[1]")).getText());
 		Print("Profissional\\Passo 5 - Laudo Cadastrado");
+		
 		//Validando se quando há febre o sistema exibe o item dipirona/paracetamol
 		try {
 			if (febre.equalsIgnoreCase("Sim")) {
