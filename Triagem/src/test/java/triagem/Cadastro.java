@@ -161,7 +161,7 @@ public class Cadastro {
 	public void Print(String nomePrint) throws IOException {
 		File foto = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String cwd = System.getProperty("user.dir");
-		FileUtils.copyFile(foto, new File("\\192.168.111.123\\Jenkins-QA\\DuoDoctor 1\\Evidência"
+		FileUtils.copyFile(foto, new File("z:\\Evidência"
 				+ pastaPrint + cod +"\\" + nomePrint + ".png"));
 	}
 
