@@ -160,7 +160,6 @@ public class Cadastro {
 
 	public void Print(String nomePrint) throws IOException {
 		File foto = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String cwd = System.getProperty("user.dir");
 		FileUtils.copyFile(foto, new File("Z:\\DuoDoctor1\\Evidência"
 				+ pastaPrint + cod +"\\" + nomePrint + ".png"));
 	}
