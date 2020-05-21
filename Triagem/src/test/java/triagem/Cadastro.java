@@ -160,7 +160,7 @@ public class Cadastro {
 
 	public void Print(String nomePrint) throws IOException {
 		File foto = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(foto, new File("\\\\192.168.111.123\\Jenkins-QA\\DuoDoctor1\\Evidencia"
+		FileUtils.copyFile(foto, new File ( "\\\\192.168.111.123\\Jenkins-QA\\DuoDoctor1\\Evidencia"
 				+ pastaPrint + cod +"\\" + nomePrint + ".png"));
 	}
 
@@ -307,11 +307,27 @@ public class Cadastro {
 				driver.findElement(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr[1]/td[3]/strong")).getText());
 		Print("Profissional\\Passo 4 - Pesquisa realizada com sucesso");
 		//Validando o Laudo exibido
-	
+		Thread.sleep(5000);
+		 driver.navigate (). refresh ();
+		 Thread.sleep(5000);
+		 driver.navigate (). refresh ();
+		 Thread.sleep(5000);
+		 driver.navigate (). refresh ();
+		 Thread.sleep(5000);
+		 driver.navigate (). refresh ();
+	try{
+		if( driver.findElement(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr[1]/td[4]/a[1]")).isDisplayed()) 
+		{
 		Assert.assertEquals(laudo,
 				driver.findElement(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr[1]/td[4]/a[1]")).getText());
-		Print("Profissional\\Passo 5 - Laudo Cadastrado");
+		Print("Profissional\\Passo 5 - Laudo Exibido Com Sucesso");
+			
+		}
+		}catch(Exception ex){
+		Print("Profissional\\Passo 5 - Laudo Não Exibido");
+		Assert.fail("Laudo não foi exibido");
 		
+		}
 		//Validando se quando há febre o sistema exibe o item dipirona/paracetamol
 		try {
 			if (febre.equalsIgnoreCase("Sim")) {
